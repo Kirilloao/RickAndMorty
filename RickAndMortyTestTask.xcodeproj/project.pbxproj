@@ -54,14 +54,38 @@
 		3C194DBA2A8E2F7300AF4A5E /* RickAndMortyTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				3C194DBB2A8E2F7300AF4A5E /* AppDelegate.swift */,
-				3C194DBD2A8E2F7300AF4A5E /* SceneDelegate.swift */,
-				3C194DBF2A8E2F7300AF4A5E /* ViewController.swift */,
-				3C194DC42A8E2F7500AF4A5E /* Assets.xcassets */,
-				3C194DC62A8E2F7500AF4A5E /* LaunchScreen.storyboard */,
+				3C194DD12A8E324A00AF4A5E /* App */,
+				3C194DCF2A8E323800AF4A5E /* Controllers */,
+				3C194DD02A8E324300AF4A5E /* Resources */,
 				3C194DC92A8E2F7500AF4A5E /* Info.plist */,
 			);
 			path = RickAndMortyTestTask;
+			sourceTree = "<group>";
+		};
+		3C194DCF2A8E323800AF4A5E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3C194DBF2A8E2F7300AF4A5E /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3C194DD02A8E324300AF4A5E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3C194DC42A8E2F7500AF4A5E /* Assets.xcassets */,
+				3C194DC62A8E2F7500AF4A5E /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3C194DD12A8E324A00AF4A5E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				3C194DBB2A8E2F7300AF4A5E /* AppDelegate.swift */,
+				3C194DBD2A8E2F7300AF4A5E /* SceneDelegate.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
