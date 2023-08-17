@@ -15,6 +15,7 @@
 		3CBFC70E2A8E45C300FC65E3 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC70D2A8E45C300FC65E3 /* NetworkManager.swift */; };
 		3CBFC7112A8E45E500FC65E3 /* RickAndMorty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC7102A8E45E500FC65E3 /* RickAndMorty.swift */; };
 		3CBFC7132A8E45FB00FC65E3 /* Episode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC7122A8E45FB00FC65E3 /* Episode.swift */; };
+		3CBFC7152A8E49C100FC65E3 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC7142A8E49C100FC65E3 /* CharacterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3CBFC70D2A8E45C300FC65E3 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		3CBFC7102A8E45E500FC65E3 /* RickAndMorty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMorty.swift; sourceTree = "<group>"; };
 		3CBFC7122A8E45FB00FC65E3 /* Episode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Episode.swift; sourceTree = "<group>"; };
+		3CBFC7142A8E49C100FC65E3 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				3CBFC70F2A8E45D800FC65E3 /* Models */,
 				3CBFC70C2A8E45B300FC65E3 /* Services */,
+				3CBFC7162A8E49C400FC65E3 /* Views */,
 				3C194DD12A8E324A00AF4A5E /* App */,
 				3C194DCF2A8E323800AF4A5E /* Controllers */,
 				3C194DD02A8E324300AF4A5E /* Resources */,
@@ -111,6 +114,14 @@
 				3CBFC7122A8E45FB00FC65E3 /* Episode.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3CBFC7162A8E49C400FC65E3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3CBFC7142A8E49C100FC65E3 /* CharacterCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,6 +197,7 @@
 				3CBFC70E2A8E45C300FC65E3 /* NetworkManager.swift in Sources */,
 				3CBFC7132A8E45FB00FC65E3 /* Episode.swift in Sources */,
 				3C194DC02A8E2F7300AF4A5E /* ListViewController.swift in Sources */,
+				3CBFC7152A8E49C100FC65E3 /* CharacterCell.swift in Sources */,
 				3C194DBC2A8E2F7300AF4A5E /* AppDelegate.swift in Sources */,
 				3CBFC7112A8E45E500FC65E3 /* RickAndMorty.swift in Sources */,
 				3C194DBE2A8E2F7300AF4A5E /* SceneDelegate.swift in Sources */,
