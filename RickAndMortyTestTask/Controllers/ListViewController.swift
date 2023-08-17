@@ -43,7 +43,7 @@ final class ListViewController: UICollectionViewController {
         
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-
+        
         navBarAppearance.backgroundColor = .black
         
         navigationController?.navigationBar.standardAppearance = navBarAppearance
@@ -67,7 +67,13 @@ extension ListViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "characterCell", for: indexPath) as? CharacterCell else { return UICollectionViewCell() }
+        guard
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: "characterCell",
+                for: indexPath) as? CharacterCell
+        else {
+            return UICollectionViewCell()
+        }
         
         let character = rickAndMorty?.results[indexPath.row]
         
