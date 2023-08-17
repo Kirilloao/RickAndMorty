@@ -22,6 +22,7 @@
 		3CBFC71E2A8E69A300FC65E3 /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC71D2A8E69A300FC65E3 /* SectionHeaderView.swift */; };
 		3CBFC7202A8E6B7800FC65E3 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC71F2A8E6B7800FC65E3 /* InfoCell.swift */; };
 		3CBFC7222A8E872900FC65E3 /* OriginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC7212A8E872900FC65E3 /* OriginCell.swift */; };
+		3CBFC7242A8EB5D500FC65E3 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC7232A8EB5D500FC65E3 /* EpisodeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3CBFC71D2A8E69A300FC65E3 /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		3CBFC71F2A8E6B7800FC65E3 /* InfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		3CBFC7212A8E872900FC65E3 /* OriginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginCell.swift; sourceTree = "<group>"; };
+		3CBFC7232A8EB5D500FC65E3 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				3CBFC71B2A8E617800FC65E3 /* MainViewCell.swift */,
 				3CBFC71F2A8E6B7800FC65E3 /* InfoCell.swift */,
 				3CBFC7212A8E872900FC65E3 /* OriginCell.swift */,
+				3CBFC7232A8EB5D500FC65E3 /* EpisodeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				3CBFC7182A8E591F00FC65E3 /* ImageCacheManager.swift in Sources */,
 				3C194DBC2A8E2F7300AF4A5E /* AppDelegate.swift in Sources */,
 				3CBFC7112A8E45E500FC65E3 /* RickAndMorty.swift in Sources */,
+				3CBFC7242A8EB5D500FC65E3 /* EpisodeCell.swift in Sources */,
 				3C194DBE2A8E2F7300AF4A5E /* SceneDelegate.swift in Sources */,
 				3CBFC7222A8E872900FC65E3 /* OriginCell.swift in Sources */,
 			);

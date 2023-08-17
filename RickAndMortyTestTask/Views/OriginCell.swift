@@ -47,8 +47,23 @@ class OriginCell: UICollectionViewCell {
     private lazy var planetLabel: UILabel = {
         var planetLabel = UILabel()
         
-        return planetLabel
+        planetLabel.textColor = #colorLiteral(red: 0.2818226516, green: 0.7749570012, blue: 0.04761204123, alpha: 1)
+        planetLabel.text = "Planet"
+        planetLabel.font = UIFont.systemFont(ofSize: 15)
+        planetLabel.translatesAutoresizingMaskIntoConstraints = false
         
+        return planetLabel
+    }()
+    
+    lazy var planetValueLabel: UILabel = {
+        var planetValueLabel = UILabel()
+        
+        planetValueLabel.text = "Earth"
+        planetValueLabel.font = UIFont.boldSystemFont(ofSize: 19)
+        planetValueLabel.textColor = .white
+        planetValueLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        return planetValueLabel
     }()
     
     // MARK: - Init
@@ -57,6 +72,8 @@ class OriginCell: UICollectionViewCell {
         contentView.addSubview(mainView)
         mainView.addSubview(squareView)
         squareView.addSubview(earthImageView)
+        mainView.addSubview(planetValueLabel)
+        mainView.addSubview(planetLabel)
         setupConstraints()
     }
     
@@ -82,7 +99,15 @@ class OriginCell: UICollectionViewCell {
             
             // setup constraints to earthImageView
             earthImageView.centerYAnchor.constraint(equalTo: squareView.centerYAnchor),
-            earthImageView.centerXAnchor.constraint(equalTo: squareView.centerXAnchor)
+            earthImageView.centerXAnchor.constraint(equalTo: squareView.centerXAnchor),
+            
+            // setup constraints to planetValueLabel
+            planetValueLabel.topAnchor.constraint(equalTo: squareView.topAnchor, constant: 5),
+            planetValueLabel.leadingAnchor.constraint(equalTo: squareView.trailingAnchor, constant: 15),
+            
+            // setup constraints to planetLabel
+            planetLabel.bottomAnchor.constraint(equalTo: squareView.bottomAnchor, constant: -7),
+            planetLabel.leadingAnchor.constraint(equalTo: squareView.trailingAnchor, constant: 15)
             
         ])
     }

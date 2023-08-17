@@ -26,10 +26,7 @@ class DetailsViewController: UICollectionViewController {
             withReuseIdentifier: SectionHeaderView.reuseIdentifier
         )
         
-        collectionView.register(
-            UICollectionViewCell.self,
-            forCellWithReuseIdentifier: "cell2"
-        )
+ 
         
         collectionView.register(
             OriginCell.self,
@@ -39,6 +36,11 @@ class DetailsViewController: UICollectionViewController {
         collectionView.register(
             InfoCell.self,
             forCellWithReuseIdentifier: "infoCell"
+        )
+        
+        collectionView.register(
+            EpisodeCell.self,
+            forCellWithReuseIdentifier: "episodeCell"
         )
         
         collectionView.backgroundColor = .clear
@@ -84,9 +86,11 @@ extension DetailsViewController {
             return cell
         } else if indexPath.section == 2 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "originCell", for: indexPath) as? OriginCell else { return UICollectionViewCell() }
+
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "episodeCell", for: indexPath) as? EpisodeCell else { return UICollectionViewCell() }
+
             return cell
         }
      
@@ -103,7 +107,7 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
         } else if indexPath.section == 2 {
             return CGSize(width: UIScreen.main.bounds.width - 32, height: 80)
         } else {
-            return CGSize(width: UIScreen.main.bounds.width - 32, height: 120)
+            return CGSize(width: UIScreen.main.bounds.width - 32, height: 86)
         }
     }
     
@@ -124,6 +128,8 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
                    headerView.titleLabel.text = "Info"
                } else if indexPath.section == 2 {
                    headerView.titleLabel.text = "Origin"
+               } else if indexPath.section == 3 {
+                   headerView.titleLabel.text = "Episodes"
                }
                
                return headerView
