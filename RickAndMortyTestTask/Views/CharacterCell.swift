@@ -43,15 +43,32 @@ class CharacterCell: UICollectionViewCell {
         return characterName
     }()
     
+    private var activityIndicator: UIActivityIndicatorView?
+    private var imageURL: URL? {
+        didSet {
+            characterImageView.image = nil
+            updateImage()
+        }
+    }
+    
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubviews()
         setupConstraints()
+        
+        activityIndicator = showSpinner(in: mainView)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    
+    func configure(with character: Character?) {
+        characterNameLabel.text = character?.name
+        imageURL = URL(string: character?.image ?? "")
     }
     
     // MARK: - Private Methods
@@ -83,19 +100,58 @@ class CharacterCell: UICollectionViewCell {
         ])
     }
     
-    // MARK: - Public Methods
-    func configure(with character: Character?) {
-        characterNameLabel.text = character?.name
+    private func getImage(from url: URL, completion: @escaping(Result<UIImage, Error>) -> Void) {
+        // Get image from cache
+        if let cachedImage = ImageCacheManager.shared.object(forKey: url.lastPathComponent as NSString) {
+            completion(.success(cachedImage))
+            return
+        }
         
-        NetworkManager.shared.fetchImage(from: character?.image ?? "") { [weak self] result in
+        // Download image from url
+        NetworkManager.shared.fetchImage(from: url) { result in
             switch result {
+            case .success(let imageData):
+                guard let uiImage = UIImage(data: imageData) else { return }
+                ImageCacheManager.shared.setObject(uiImage, forKey: url.lastPathComponent as NSString)
                 
-            case .success(let image):
-                self?.characterImageView.image = UIImage(data: image)
+                completion(.success(uiImage))
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+    private func updateImage() {
+        guard let imageURL = imageURL else { return }
+        
+        getImage(from: imageURL) { [weak self] result in
+            switch result {
+                
+            case .success(let image):
+                if imageURL == self?.imageURL {
+                    self?.characterImageView.image = image
+                    self?.activityIndicator?.stopAnimating()
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func showSpinner(in view: UIView) -> UIActivityIndicatorView {
+        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        view.addSubview(activityIndicator)
+        activityIndicator.color = .white
+        activityIndicator.startAnimating()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(equalTo: characterImageView.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: characterImageView.centerYAnchor)
+        ])
+        
+        activityIndicator.hidesWhenStopped = true
+        
+        return activityIndicator
+    }
 }
