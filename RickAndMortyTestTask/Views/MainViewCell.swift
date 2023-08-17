@@ -78,7 +78,6 @@ class MainViewCell: UICollectionViewCell {
             characterStatusLabel.topAnchor.constraint(equalTo: characterNameLabel.bottomAnchor, constant: 8),
             characterStatusLabel.leadingAnchor.constraint(equalTo: characterImageView.leadingAnchor),
             characterStatusLabel.trailingAnchor.constraint(equalTo: characterImageView.trailingAnchor)
-            
         ])
     }
 }

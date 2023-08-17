@@ -21,14 +21,19 @@ class DetailsViewController: UICollectionViewController {
         )
         
         collectionView.register(
-            SectionHeaderReusableView.self,
+            SectionHeaderView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: SectionHeaderReusableView.reuseIdentifier
+            withReuseIdentifier: SectionHeaderView.reuseIdentifier
         )
         
         collectionView.register(
             UICollectionViewCell.self,
             forCellWithReuseIdentifier: "cell2"
+        )
+        
+        collectionView.register(
+            OriginCell.self,
+            forCellWithReuseIdentifier: "originCell"
         )
         
         collectionView.register(
@@ -42,7 +47,7 @@ class DetailsViewController: UICollectionViewController {
     // MARK: - Init
     init() {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 20, left: 80, bottom: 0, right: 80)
+        layout.sectionInset = UIEdgeInsets(top: 20 , left: 60, bottom: 0, right: 60)
         super.init(collectionViewLayout: layout)
     }
     
@@ -72,50 +77,62 @@ extension DetailsViewController {
         
         if indexPath.section == 0 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? MainViewCell else { return UICollectionViewCell() }
-         
         
             return cell
         } else if indexPath.section == 1 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as? InfoCell else { return UICollectionViewCell() }
-        
+            return cell
+        } else if indexPath.section == 2 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "originCell", for: indexPath) as? OriginCell else { return UICollectionViewCell() }
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath)
-         
-        
             return cell
         }
      
     }
-    
-   override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            if kind == UICollectionView.elementKindSectionHeader {
-                let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderReusableView.reuseIdentifier, for: indexPath) as! SectionHeaderReusableView
-                
-                // Проверяем, для какой секции добавляем заголовок и устанавливаем текст
-                if indexPath.section == 1 {
-                    headerView.titleLabel.text = "Your Section Title"
-                } else {
-                    headerView.titleLabel.text = "" // Пустой заголовок для остальных секций
-                }
-                
-                return headerView
-            }
-            
-            return UICollectionReusableView()
-        }
-    
-    
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
 extension DetailsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: 150, height: 202)
+            return CGSize(width: 150, height: 220)
+        } else if indexPath.section == 1 {
+            return CGSize(width: UIScreen.main.bounds.width - 32, height: 120)
+        } else if indexPath.section == 2 {
+            return CGSize(width: UIScreen.main.bounds.width - 32, height: 80)
         } else {
-            return CGSize(width: UIScreen.main.bounds.width - 32, height: 130)
+            return CGSize(width: UIScreen.main.bounds.width - 32, height: 120)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+            if section == 0 {
+                return UIEdgeInsets(top: 20, left: 60, bottom: 20, right: 60)
+            } else {
+                return UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16)
+            }
         }
     
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+           if kind == UICollectionView.elementKindSectionHeader {
+               let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SectionHeaderView.reuseIdentifier, for: indexPath) as! SectionHeaderView
+               
+            
+               if indexPath.section == 1 {
+                   headerView.titleLabel.text = "Info"
+               } else if indexPath.section == 2 {
+                   headerView.titleLabel.text = "Origin"
+               }
+               
+               return headerView
+           }
+           
+           return UICollectionReusableView()
+       }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+      CGSize(width: collectionView.bounds.width, height: 20)
     }
 }
