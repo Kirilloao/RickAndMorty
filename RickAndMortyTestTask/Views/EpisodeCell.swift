@@ -13,7 +13,7 @@ class EpisodeCell: UICollectionViewCell {
     private lazy var mainView: UIView = {
         var mainView = UIView()
         
-        mainView.backgroundColor = #colorLiteral(red: 0.1482235789, green: 0.1655988097, blue: 0.2178440988, alpha: 1)
+        mainView.backgroundColor = .greyColor
         mainView.translatesAutoresizingMaskIntoConstraints = false
         mainView.layer.cornerRadius = 15
         mainView.clipsToBounds = true
@@ -21,13 +21,14 @@ class EpisodeCell: UICollectionViewCell {
         return mainView
     }()
     
+    // MARK: - Public UI Properties
     lazy var nameEpisodeLabel: UILabel = {
         var nameEpisode = UILabel()
         
         nameEpisode.textColor = .white
         nameEpisode.font = UIFont.boldSystemFont(ofSize: 18)
         nameEpisode.translatesAutoresizingMaskIntoConstraints = false
-        nameEpisode.adjustsFontSizeToFitWidth = true // Устанавливаем автоматическое уменьшение шрифта
+        nameEpisode.adjustsFontSizeToFitWidth = true
         nameEpisode.minimumScaleFactor = 0.5
         
         return nameEpisode
@@ -36,7 +37,7 @@ class EpisodeCell: UICollectionViewCell {
     lazy var episodeNumberLabel: UILabel = {
         var episodeNumberLabel = UILabel()
         
-        episodeNumberLabel.textColor = #colorLiteral(red: 0.2818226516, green: 0.7749570012, blue: 0.04761204123, alpha: 1)
+        episodeNumberLabel.textColor = .greenColor
         episodeNumberLabel.font = UIFont.systemFont(ofSize: 15)
         episodeNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -46,7 +47,6 @@ class EpisodeCell: UICollectionViewCell {
     lazy var dateLabel: UILabel = {
         var dateLabel = UILabel()
         
-        dateLabel.text = "December 2, 2013"
         dateLabel.textColor = UIColor(red: 0.577, green: 0.595, blue: 0.613, alpha: 1)
         dateLabel.font = UIFont.systemFont(ofSize: 14)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false

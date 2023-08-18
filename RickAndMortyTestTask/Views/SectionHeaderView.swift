@@ -12,9 +12,11 @@ class SectionHeaderView: UICollectionReusableView {
     
     let titleLabel: UILabel = {
         let label = UILabel()
+        
         label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = .white // Цвет текста заголовка
+        label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -26,7 +28,6 @@ class SectionHeaderView: UICollectionReusableView {
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             titleLabel.topAnchor.constraint(equalTo: topAnchor),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
-            // Указать еще констрейнты по необходимости
         ])
     }
     

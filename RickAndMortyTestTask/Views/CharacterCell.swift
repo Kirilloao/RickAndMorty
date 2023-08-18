@@ -13,7 +13,7 @@ class CharacterCell: UICollectionViewCell {
     private lazy var mainView: UIView = {
         var mainView = UIView()
         
-        mainView.backgroundColor = #colorLiteral(red: 0.1482235789, green: 0.1655988097, blue: 0.2178440988, alpha: 1)
+        mainView.backgroundColor = .greyColor
         mainView.layer.cornerRadius = 15
         mainView.clipsToBounds = true
         mainView.translatesAutoresizingMaskIntoConstraints = false
@@ -65,7 +65,6 @@ class CharacterCell: UICollectionViewCell {
     }
     
     // MARK: - Public Methods
-    
     func configure(with character: Character?) {
         characterNameLabel.text = character?.name
         imageURL = URL(string: character?.image ?? "")
@@ -80,20 +79,16 @@ class CharacterCell: UICollectionViewCell {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            
-            // setup constraints to mainView
             mainView.topAnchor.constraint(equalTo: contentView.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            // setup constraints to characterImageView
             characterImageView.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 8),
             characterImageView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 8),
             characterImageView.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -8),
             characterImageView.heightAnchor.constraint(equalToConstant: 140),
             
-            // setup constraints to nameLabel
             characterNameLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: 10),
             characterNameLabel.leadingAnchor.constraint(equalTo: characterImageView.leadingAnchor),
             characterNameLabel.trailingAnchor.constraint(equalTo: characterImageView.trailingAnchor)

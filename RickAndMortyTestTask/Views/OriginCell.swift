@@ -13,11 +13,10 @@ class OriginCell: UICollectionViewCell {
     private lazy var mainView: UIView = {
         var mainView = UIView()
         
-        mainView.backgroundColor = #colorLiteral(red: 0.1482235789, green: 0.1655988097, blue: 0.2178440988, alpha: 1)
+        mainView.backgroundColor = .greyColor
         mainView.translatesAutoresizingMaskIntoConstraints = false
         mainView.layer.cornerRadius = 15
         mainView.clipsToBounds = true
-        
         
         return mainView
     }()
@@ -30,7 +29,6 @@ class OriginCell: UICollectionViewCell {
         squareView.layer.cornerRadius = 10
         squareView.clipsToBounds = true
         
-        
         return squareView
     }()
     
@@ -41,13 +39,12 @@ class OriginCell: UICollectionViewCell {
         earthImageView.translatesAutoresizingMaskIntoConstraints = false
         
         return earthImageView
-        
     }()
     
     private lazy var planetLabel: UILabel = {
         var planetLabel = UILabel()
         
-        planetLabel.textColor = #colorLiteral(red: 0.2818226516, green: 0.7749570012, blue: 0.04761204123, alpha: 1)
+        planetLabel.textColor = .greenColor
         planetLabel.text = "Planet"
         planetLabel.font = UIFont.systemFont(ofSize: 15)
         planetLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -73,6 +70,7 @@ class OriginCell: UICollectionViewCell {
         squareView.addSubview(earthImageView)
         mainView.addSubview(planetValueLabel)
         mainView.addSubview(planetLabel)
+        
         setupConstraints()
     }
     
@@ -89,27 +87,22 @@ class OriginCell: UICollectionViewCell {
     private func setupConstraints() {
         
         NSLayoutConstraint.activate([
-           // setup constraints to mainView
             mainView.topAnchor.constraint(equalTo: contentView.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             mainView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             mainView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
-            // setup constraints to squareView
             squareView.heightAnchor.constraint(equalToConstant: 64),
             squareView.widthAnchor.constraint(equalToConstant: 64),
             squareView.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 10),
             squareView.centerYAnchor.constraint(equalTo: mainView.centerYAnchor),
             
-            // setup constraints to earthImageView
             earthImageView.centerYAnchor.constraint(equalTo: squareView.centerYAnchor),
             earthImageView.centerXAnchor.constraint(equalTo: squareView.centerXAnchor),
             
-            // setup constraints to planetValueLabel
             planetValueLabel.topAnchor.constraint(equalTo: squareView.topAnchor, constant: 5),
             planetValueLabel.leadingAnchor.constraint(equalTo: squareView.trailingAnchor, constant: 15),
             
-            // setup constraints to planetLabel
             planetLabel.bottomAnchor.constraint(equalTo: squareView.bottomAnchor, constant: -7),
             planetLabel.leadingAnchor.constraint(equalTo: squareView.trailingAnchor, constant: 15)
             
