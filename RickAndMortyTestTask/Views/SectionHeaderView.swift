@@ -14,7 +14,6 @@ class SectionHeaderView: UICollectionReusableView {
         let label = CustomLabel(
             customFont: UIFont.boldSystemFont(ofSize: 18)
         )
-
         return label
     }()
     

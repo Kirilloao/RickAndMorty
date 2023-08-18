@@ -12,27 +12,22 @@ class OriginCell: UICollectionViewCell {
     // MARK: - Private UI Properties
     private lazy var mainView: CustomView = {
         var mainView = CustomView()
-
         return mainView
     }()
     
     private lazy var squareView: UIView = {
         var squareView = UIView()
-        
         squareView.backgroundColor = #colorLiteral(red: 0.09701510519, green: 0.1106951013, blue: 0.162830621, alpha: 1)
         squareView.translatesAutoresizingMaskIntoConstraints = false
         squareView.layer.cornerRadius = 10
         squareView.clipsToBounds = true
-        
         return squareView
     }()
     
     private lazy var earthImageView: UIImageView = {
         var earthImageView = UIImageView()
-        
         earthImageView.image = UIImage(named: "earth")
         earthImageView.translatesAutoresizingMaskIntoConstraints = false
-        
         return earthImageView
     }()
     
@@ -42,7 +37,6 @@ class OriginCell: UICollectionViewCell {
             customColor: .greenColor,
             customFont: UIFont.systemFont(ofSize: 15)
         )
-
         return planetLabel
     }()
     
@@ -50,7 +44,6 @@ class OriginCell: UICollectionViewCell {
         var planetValueLabel = CustomLabel(
             customFont: UIFont.boldSystemFont(ofSize: 17)
         )
-
         return planetValueLabel
     }()
     

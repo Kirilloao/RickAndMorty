@@ -12,7 +12,6 @@ class InfoCell: UICollectionViewCell {
     // MARK: - Private UI Properties
     private lazy var mainView: CustomView = {
         var mainView = CustomView()
-
         return mainView
     }()
     
@@ -21,7 +20,6 @@ class InfoCell: UICollectionViewCell {
             customText: "Species:",
             customColor: .greylabel
         )
-
         return speciesLabel
     }()
     
@@ -30,7 +28,6 @@ class InfoCell: UICollectionViewCell {
             customText: "Type:",
             customColor: .greylabel
         )
-
         return typeLabel
     }()
     
@@ -39,26 +36,22 @@ class InfoCell: UICollectionViewCell {
             customText: "Gender",
             customColor: .greylabel
         )
-        
         return genderLabel
     }()
     
     // MARK: - Public UI Properties
     lazy var speciesValueLabel: CustomLabel = {
         var speciesValueLabel = CustomLabel(customColor: .white)
-
         return speciesValueLabel
     }()
     
     lazy var typeValueLabel: CustomLabel = {
         var typeValueLabel = CustomLabel(customColor: .white)
-        
         return typeValueLabel
     }()
     
     lazy var genderValueLabel: CustomLabel = {
         var genderValueLabel = CustomLabel(customColor: .white)
-        
         return genderValueLabel
     }()
     
@@ -66,7 +59,6 @@ class InfoCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addViews()
-        
         setupConstraints()
     }
     

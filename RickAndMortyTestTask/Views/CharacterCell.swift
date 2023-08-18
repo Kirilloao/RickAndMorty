@@ -12,25 +12,21 @@ class CharacterCell: UICollectionViewCell {
     // MARK: - UI Properties
     private lazy var mainView: CustomView = {
         var mainView = CustomView()
-
         return mainView
     }()
     
     lazy var characterImageView: CustomImageView = {
         var characterImage = CustomImageView()
-
         return characterImage
     }()
     
     lazy var characterNameLabel: UILabel = {
         var characterName = UILabel()
-        
         characterName.font = UIFont.boldSystemFont(ofSize: 16)
         characterName.numberOfLines = 2
         characterName.textColor = .white
         characterName.textAlignment = .center
         characterName.translatesAutoresizingMaskIntoConstraints = false
-        
         return characterName
     }()
     
@@ -130,13 +126,12 @@ class CharacterCell: UICollectionViewCell {
         activityIndicator.color = .white
         activityIndicator.startAnimating()
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.hidesWhenStopped = true
         
         NSLayoutConstraint.activate([
             activityIndicator.centerXAnchor.constraint(equalTo: characterImageView.centerXAnchor),
             activityIndicator.centerYAnchor.constraint(equalTo: characterImageView.centerYAnchor)
         ])
-        
-        activityIndicator.hidesWhenStopped = true
         
         return activityIndicator
     }

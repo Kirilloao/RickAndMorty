@@ -11,30 +11,25 @@ class MainViewCell: UICollectionViewCell {
     
     lazy var characterImageView: CustomImageView = {
         var characterImage = CustomImageView()
-
         return characterImage
     }()
     
     lazy var characterNameLabel: UILabel = {
         var characterName = UILabel()
-        
         characterName.font = UIFont.boldSystemFont(ofSize: 20)
         characterName.numberOfLines = 2
         characterName.textColor = .white
         characterName.textAlignment = .center
         characterName.translatesAutoresizingMaskIntoConstraints = false
-        
         return characterName
     }()
     
     lazy var characterStatusLabel: UILabel = {
         var characterStatusLabel = UILabel()
-        
         characterStatusLabel.textColor = .greenColor
         characterStatusLabel.font = UIFont.systemFont(ofSize: 15)
         characterStatusLabel.textAlignment = .center
         characterStatusLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         return characterStatusLabel
     }()
     
@@ -44,7 +39,6 @@ class MainViewCell: UICollectionViewCell {
         contentView.addSubview(characterImageView)
         contentView.addSubview(characterNameLabel)
         contentView.addSubview(characterStatusLabel)
-        
         setupConstraints()
     }
     
@@ -61,7 +55,6 @@ class MainViewCell: UICollectionViewCell {
         
         NetworkManager.shared.fetchImage(from: imageURL) { [weak self] result in
             switch result {
-                
             case .success(let imageData):
                 self?.characterImageView.image = UIImage(data: imageData)
             case .failure(let error):

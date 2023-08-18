@@ -12,7 +12,6 @@ class EpisodeCell: UICollectionViewCell {
     // MARK: - Private UI Properties
     private lazy var mainView: CustomView = {
         var mainView = CustomView()
-        
         return mainView
     }()
     
@@ -21,7 +20,6 @@ class EpisodeCell: UICollectionViewCell {
         var nameEpisode = CustomLabel(
             customFont: UIFont.boldSystemFont(ofSize: 18)
         )
-        
         return nameEpisode
     }()
     
@@ -30,7 +28,6 @@ class EpisodeCell: UICollectionViewCell {
             customColor: .greenColor,
             customFont: UIFont.systemFont(ofSize: 15)
         )
-        
         return episodeNumberLabel
     }()
     
@@ -39,7 +36,6 @@ class EpisodeCell: UICollectionViewCell {
             customColor: .dateLabel,
             customFont: UIFont.systemFont(ofSize: 14)
         )
-        
         return dateLabel
     }()
     
