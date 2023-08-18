@@ -24,6 +24,9 @@
 		3CBFC7222A8E872900FC65E3 /* OriginCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC7212A8E872900FC65E3 /* OriginCell.swift */; };
 		3CBFC7242A8EB5D500FC65E3 /* EpisodeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC7232A8EB5D500FC65E3 /* EpisodeCell.swift */; };
 		3CBFC7272A8F4C5200FC65E3 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC7262A8F4C5200FC65E3 /* Colors.swift */; };
+		3CBFC7292A8F6C8D00FC65E3 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC7282A8F6C8D00FC65E3 /* CustomView.swift */; };
+		3CBFC72B2A8F6E7E00FC65E3 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC72A2A8F6E7E00FC65E3 /* CustomLabel.swift */; };
+		3CBFC72D2A8F757F00FC65E3 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CBFC72C2A8F757F00FC65E3 /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +49,9 @@
 		3CBFC7212A8E872900FC65E3 /* OriginCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OriginCell.swift; sourceTree = "<group>"; };
 		3CBFC7232A8EB5D500FC65E3 /* EpisodeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodeCell.swift; sourceTree = "<group>"; };
 		3CBFC7262A8F4C5200FC65E3 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		3CBFC7282A8F6C8D00FC65E3 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		3CBFC72A2A8F6E7E00FC65E3 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		3CBFC72C2A8F757F00FC65E3 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +158,9 @@
 			isa = PBXGroup;
 			children = (
 				3CBFC7262A8F4C5200FC65E3 /* Colors.swift */,
+				3CBFC7282A8F6C8D00FC65E3 /* CustomView.swift */,
+				3CBFC72A2A8F6E7E00FC65E3 /* CustomLabel.swift */,
+				3CBFC72C2A8F757F00FC65E3 /* CustomImageView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -227,9 +236,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CBFC70E2A8E45C300FC65E3 /* NetworkManager.swift in Sources */,
+				3CBFC72D2A8F757F00FC65E3 /* CustomImageView.swift in Sources */,
+				3CBFC7292A8F6C8D00FC65E3 /* CustomView.swift in Sources */,
 				3CBFC7272A8F4C5200FC65E3 /* Colors.swift in Sources */,
 				3CBFC7132A8E45FB00FC65E3 /* Episode.swift in Sources */,
 				3CBFC71A2A8E5F8400FC65E3 /* DetailsViewController.swift in Sources */,
+				3CBFC72B2A8F6E7E00FC65E3 /* CustomLabel.swift in Sources */,
 				3CBFC71E2A8E69A300FC65E3 /* SectionHeaderView.swift in Sources */,
 				3C194DC02A8E2F7300AF4A5E /* ListViewController.swift in Sources */,
 				3CBFC7202A8E6B7800FC65E3 /* InfoCell.swift in Sources */,

@@ -10,13 +10,11 @@ import UIKit
 class SectionHeaderView: UICollectionReusableView {
     static let reuseIdentifier = "SectionHeaderView"
     
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        
-        label.font = UIFont.boldSystemFont(ofSize: 18)
-        label.textColor = .white
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
+    let titleLabel: CustomLabel = {
+        let label = CustomLabel(
+            customFont: UIFont.boldSystemFont(ofSize: 18)
+        )
+
         return label
     }()
     

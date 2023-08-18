@@ -9,13 +9,9 @@ import UIKit
 
 class MainViewCell: UICollectionViewCell {
     
-    lazy var characterImageView: UIImageView = {
-        var characterImage = UIImageView()
-        
-        characterImage.layer.cornerRadius = 15
-        characterImage.clipsToBounds = true
-        characterImage.translatesAutoresizingMaskIntoConstraints = false
-        
+    lazy var characterImageView: CustomImageView = {
+        var characterImage = CustomImageView()
+
         return characterImage
     }()
     
@@ -36,7 +32,6 @@ class MainViewCell: UICollectionViewCell {
         
         characterStatusLabel.textColor = .greenColor
         characterStatusLabel.font = UIFont.systemFont(ofSize: 15)
-        characterStatusLabel.numberOfLines = 2
         characterStatusLabel.textAlignment = .center
         characterStatusLabel.translatesAutoresizingMaskIntoConstraints = false
         

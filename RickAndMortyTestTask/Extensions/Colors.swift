@@ -15,4 +15,12 @@ extension UIColor {
     static var greenColor: UIColor {
         return UIColor(red: 0.278, green: 0.775, blue: 0.045, alpha: 1)
     }
+    
+    static var greylabel: UIColor {
+        return UIColor(red: 0.768, green: 0.789, blue: 0.808, alpha: 1)
+    }
+    
+    static var dateLabel: UIColor {
+        return UIColor(red: 0.577, green: 0.595, blue: 0.613, alpha: 1)
+    }
 }

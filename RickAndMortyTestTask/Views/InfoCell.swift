@@ -10,76 +10,54 @@ import UIKit
 class InfoCell: UICollectionViewCell {
     
     // MARK: - Private UI Properties
-    private lazy var mainView: UIView = {
-        var mainView = UIView()
-        
-        mainView.backgroundColor = .greyColor
-        mainView.translatesAutoresizingMaskIntoConstraints = false
-        mainView.layer.cornerRadius = 15
-        mainView.clipsToBounds = true
-        
+    private lazy var mainView: CustomView = {
+        var mainView = CustomView()
+
         return mainView
     }()
     
-    private lazy var speciesLabel: UILabel = {
-        var speciesLabel = UILabel()
-        
-        speciesLabel.text = "Species:"
-        speciesLabel.textColor = #colorLiteral(red: 0.7689349651, green: 0.7886797786, blue: 0.80892694, alpha: 1)
-        speciesLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+    private lazy var speciesLabel: CustomLabel = {
+        var speciesLabel = CustomLabel(
+            customText: "Species:",
+            customColor: .greylabel
+        )
+
         return speciesLabel
-        
     }()
     
-    private lazy var typeLabel: UILabel = {
-        var typeLabel = UILabel()
-        
-        typeLabel.text = "Type:"
-        typeLabel.textColor = #colorLiteral(red: 0.7689349651, green: 0.7886797786, blue: 0.80892694, alpha: 1)
-        typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+    private lazy var typeLabel: CustomLabel = {
+        var typeLabel = CustomLabel(
+            customText: "Type:",
+            customColor: .greylabel
+        )
+
         return typeLabel
-        
     }()
     
-    private lazy var genderLabel: UILabel = {
-        var genderLabel = UILabel()
-        
-        genderLabel.text = "Gender:"
-        genderLabel.textColor = #colorLiteral(red: 0.7689349651, green: 0.7886797786, blue: 0.80892694, alpha: 1)
-        genderLabel.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var genderLabel: CustomLabel = {
+        var genderLabel = CustomLabel(
+            customText: "Gender",
+            customColor: .greylabel
+        )
         
         return genderLabel
-        
     }()
     
     // MARK: - Public UI Properties
-    lazy var speciesValueLabel: UILabel = {
-        var speciesValueLabel = UILabel()
-        
-        speciesValueLabel.textColor = .white
-        speciesValueLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+    lazy var speciesValueLabel: CustomLabel = {
+        var speciesValueLabel = CustomLabel(customColor: .white)
+
         return speciesValueLabel
-        
     }()
     
-    lazy var typeValueLabel: UILabel = {
-        var typeValueLabel = UILabel()
-        
-        typeValueLabel.textColor = .white
-        typeValueLabel.translatesAutoresizingMaskIntoConstraints = false
+    lazy var typeValueLabel: CustomLabel = {
+        var typeValueLabel = CustomLabel(customColor: .white)
         
         return typeValueLabel
-        
     }()
     
-    lazy var genderValueLabel: UILabel = {
-        var genderValueLabel = UILabel()
-        
-        genderValueLabel.textColor = .white
-        genderValueLabel.translatesAutoresizingMaskIntoConstraints = false
+    lazy var genderValueLabel: CustomLabel = {
+        var genderValueLabel = CustomLabel(customColor: .white)
         
         return genderValueLabel
     }()
@@ -144,7 +122,6 @@ class InfoCell: UICollectionViewCell {
             genderValueLabel.topAnchor.constraint(equalTo: typeValueLabel.bottomAnchor, constant: 15),
             genderValueLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -15),
             genderValueLabel.heightAnchor.constraint(equalToConstant: 20),
-            
         ])
     }
 }

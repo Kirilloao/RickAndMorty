@@ -10,24 +10,15 @@ import UIKit
 class CharacterCell: UICollectionViewCell {
     
     // MARK: - UI Properties
-    private lazy var mainView: UIView = {
-        var mainView = UIView()
-        
-        mainView.backgroundColor = .greyColor
-        mainView.layer.cornerRadius = 15
-        mainView.clipsToBounds = true
-        mainView.translatesAutoresizingMaskIntoConstraints = false
-        
+    private lazy var mainView: CustomView = {
+        var mainView = CustomView()
+
         return mainView
     }()
     
-    lazy var characterImageView: UIImageView = {
-        var characterImage = UIImageView()
-        
-        characterImage.layer.cornerRadius = 15
-        characterImage.clipsToBounds = true
-        characterImage.translatesAutoresizingMaskIntoConstraints = false
-        
+    lazy var characterImageView: CustomImageView = {
+        var characterImage = CustomImageView()
+
         return characterImage
     }()
     

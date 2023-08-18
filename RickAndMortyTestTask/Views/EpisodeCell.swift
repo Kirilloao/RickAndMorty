@@ -10,46 +10,35 @@ import UIKit
 class EpisodeCell: UICollectionViewCell {
     
     // MARK: - Private UI Properties
-    private lazy var mainView: UIView = {
-        var mainView = UIView()
-        
-        mainView.backgroundColor = .greyColor
-        mainView.translatesAutoresizingMaskIntoConstraints = false
-        mainView.layer.cornerRadius = 15
-        mainView.clipsToBounds = true
+    private lazy var mainView: CustomView = {
+        var mainView = CustomView()
         
         return mainView
     }()
     
     // MARK: - Public UI Properties
-    lazy var nameEpisodeLabel: UILabel = {
-        var nameEpisode = UILabel()
-        
-        nameEpisode.textColor = .white
-        nameEpisode.font = UIFont.boldSystemFont(ofSize: 18)
-        nameEpisode.translatesAutoresizingMaskIntoConstraints = false
-        nameEpisode.adjustsFontSizeToFitWidth = true
-        nameEpisode.minimumScaleFactor = 0.5
+    lazy var nameEpisodeLabel: CustomLabel = {
+        var nameEpisode = CustomLabel(
+            customFont: UIFont.boldSystemFont(ofSize: 18)
+        )
         
         return nameEpisode
     }()
     
-    lazy var episodeNumberLabel: UILabel = {
-        var episodeNumberLabel = UILabel()
-        
-        episodeNumberLabel.textColor = .greenColor
-        episodeNumberLabel.font = UIFont.systemFont(ofSize: 15)
-        episodeNumberLabel.translatesAutoresizingMaskIntoConstraints = false
+    lazy var episodeNumberLabel: CustomLabel = {
+        var episodeNumberLabel = CustomLabel(
+            customColor: .greenColor,
+            customFont: UIFont.systemFont(ofSize: 15)
+        )
         
         return episodeNumberLabel
     }()
     
-    lazy var dateLabel: UILabel = {
-        var dateLabel = UILabel()
-        
-        dateLabel.textColor = UIColor(red: 0.577, green: 0.595, blue: 0.613, alpha: 1)
-        dateLabel.font = UIFont.systemFont(ofSize: 14)
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
+    lazy var dateLabel: CustomLabel = {
+        var dateLabel = CustomLabel(
+            customColor: .dateLabel,
+            customFont: UIFont.systemFont(ofSize: 14)
+        )
         
         return dateLabel
     }()
@@ -57,11 +46,7 @@ class EpisodeCell: UICollectionViewCell {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(mainView)
-        mainView.addSubview(nameEpisodeLabel)
-        mainView.addSubview(episodeNumberLabel)
-        mainView.addSubview(dateLabel)
-        
+        addViews()
         setupConstraints()
     }
     
@@ -96,6 +81,14 @@ class EpisodeCell: UICollectionViewCell {
     }
     
     // MARK: - Private Methods
+    private func addViews() {
+        contentView.addSubview(mainView)
+        mainView.addSubview(nameEpisodeLabel)
+        mainView.addSubview(episodeNumberLabel)
+        mainView.addSubview(dateLabel)
+        
+    }
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: contentView.topAnchor),

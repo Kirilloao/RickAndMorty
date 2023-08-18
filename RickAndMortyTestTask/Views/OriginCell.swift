@@ -10,14 +10,9 @@ import UIKit
 class OriginCell: UICollectionViewCell {
     
     // MARK: - Private UI Properties
-    private lazy var mainView: UIView = {
-        var mainView = UIView()
-        
-        mainView.backgroundColor = .greyColor
-        mainView.translatesAutoresizingMaskIntoConstraints = false
-        mainView.layer.cornerRadius = 15
-        mainView.clipsToBounds = true
-        
+    private lazy var mainView: CustomView = {
+        var mainView = CustomView()
+
         return mainView
     }()
     
@@ -41,36 +36,28 @@ class OriginCell: UICollectionViewCell {
         return earthImageView
     }()
     
-    private lazy var planetLabel: UILabel = {
-        var planetLabel = UILabel()
-        
-        planetLabel.textColor = .greenColor
-        planetLabel.text = "Planet"
-        planetLabel.font = UIFont.systemFont(ofSize: 15)
-        planetLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+    private lazy var planetLabel: CustomLabel = {
+        var planetLabel = CustomLabel(
+            customText: "Planet",
+            customColor: .greenColor,
+            customFont: UIFont.systemFont(ofSize: 15)
+        )
+
         return planetLabel
     }()
     
-    lazy var planetValueLabel: UILabel = {
-        var planetValueLabel = UILabel()
-        
-        planetValueLabel.font = UIFont.boldSystemFont(ofSize: 17)
-        planetValueLabel.textColor = .white
-        planetValueLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+    lazy var planetValueLabel: CustomLabel = {
+        var planetValueLabel = CustomLabel(
+            customFont: UIFont.boldSystemFont(ofSize: 17)
+        )
+
         return planetValueLabel
     }()
     
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(mainView)
-        mainView.addSubview(squareView)
-        squareView.addSubview(earthImageView)
-        mainView.addSubview(planetValueLabel)
-        mainView.addSubview(planetLabel)
-        
+        addViews()
         setupConstraints()
     }
     
@@ -84,8 +71,16 @@ class OriginCell: UICollectionViewCell {
     }
     
     // MARK: - Private Methods
-    private func setupConstraints() {
+    private func addViews() {
+        contentView.addSubview(mainView)
+        mainView.addSubview(squareView)
+        squareView.addSubview(earthImageView)
+        mainView.addSubview(planetValueLabel)
+        mainView.addSubview(planetLabel)
         
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             mainView.topAnchor.constraint(equalTo: contentView.topAnchor),
             mainView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -105,7 +100,6 @@ class OriginCell: UICollectionViewCell {
             
             planetLabel.bottomAnchor.constraint(equalTo: squareView.bottomAnchor, constant: -7),
             planetLabel.leadingAnchor.constraint(equalTo: squareView.trailingAnchor, constant: 15)
-            
         ])
     }
 }
