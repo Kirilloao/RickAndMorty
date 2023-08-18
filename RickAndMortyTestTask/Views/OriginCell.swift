@@ -77,7 +77,6 @@ class OriginCell: UICollectionViewCell {
         squareView.addSubview(earthImageView)
         mainView.addSubview(planetValueLabel)
         mainView.addSubview(planetLabel)
-        
     }
     
     private func setupConstraints() {

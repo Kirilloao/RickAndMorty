@@ -41,7 +41,6 @@ class MainViewCell: UICollectionViewCell {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         contentView.addSubview(characterImageView)
         contentView.addSubview(characterNameLabel)
         contentView.addSubview(characterStatusLabel)

@@ -61,19 +61,7 @@ class EpisodeCell: UICollectionViewCell {
             case .success(let episode):
                 self?.nameEpisodeLabel.text = episode.name
                 self?.dateLabel.text = episode.airDate
-                
-                if let seasonRange = episode.episode.range(of: "S(\\d{2})", options: .regularExpression),
-                   let episodeRange = episode.episode.range(of: "E(\\d{2})", options: .regularExpression) {
-                    
-                    let seasonNumber = String(Int(episode.episode[seasonRange].dropFirst()) ?? 0)
-                    let episodeNumber = String(Int(episode.episode[episodeRange].dropFirst()) ?? 0)
-                    
-                    let formattedEpisode = "Episode: \(episodeNumber), Season: \(seasonNumber)"
-                    self?.episodeNumberLabel.text = formattedEpisode
-                } else {
-                    self?.episodeNumberLabel.text = episode.episode
-                }
-                
+                self?.episodeNumberLabel.text = self?.formatEpisodeNumber(episode.episode)
             case .failure(let error):
                 print(error)
             }
@@ -86,7 +74,6 @@ class EpisodeCell: UICollectionViewCell {
         mainView.addSubview(nameEpisodeLabel)
         mainView.addSubview(episodeNumberLabel)
         mainView.addSubview(dateLabel)
-        
     }
     
     private func setupConstraints() {
@@ -106,5 +93,18 @@ class EpisodeCell: UICollectionViewCell {
             dateLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -16),
             dateLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -15)
         ])
+    }
+    
+    func formatEpisodeNumber(_ episodeNumber: String) -> String {
+        if let seasonRange = episodeNumber.range(of: "S(\\d{2})", options: .regularExpression),
+           let episodeRange = episodeNumber.range(of: "E(\\d{2})", options: .regularExpression) {
+            
+            let seasonNumber = String(Int(episodeNumber[seasonRange].dropFirst()) ?? 0)
+            let episodeNumber = String(Int(episodeNumber[episodeRange].dropFirst()) ?? 0)
+            
+            return "Episode: \(episodeNumber), Season: \(seasonNumber)"
+        } else {
+            return episodeNumber
+        }
     }
 }

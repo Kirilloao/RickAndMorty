@@ -9,8 +9,34 @@ import UIKit
 
 final class ListViewController: UICollectionViewController {
     
+    // MARK: - Private UI Properties
+    private lazy var previousBarButton: UIBarButtonItem = {
+        var previousButton = createBarButton(
+            "Previous page",
+            action: #selector(updateData(_:))
+        )
+        
+        return previousButton
+    }()
+    
+    private lazy var nextBarButton: UIBarButtonItem = {
+        var nextButton = createBarButton(
+            "Next page",
+            action: #selector(updateData(_:))
+        )
+        
+        return nextButton
+    }()
+    
     // MARK: - Private Properties
     private var rickAndMorty: RickAndMorty?
+    private var currentPage = 1 {
+        didSet {
+            if currentPage == 1 {
+                previousBarButton.isEnabled = false
+            }
+        }
+    }
     
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
@@ -18,6 +44,7 @@ final class ListViewController: UICollectionViewController {
         setupCollectionView()
         
         view.backgroundColor = .black
+        previousBarButton.isEnabled = false
         
         fetchCharacters(from: Links.rickAndMortyURL.rawValue)
         setupNavigationBar()
@@ -34,6 +61,24 @@ final class ListViewController: UICollectionViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Private Actions
+    @objc private func updateData(_ sender: UIBarButtonItem) {
+        if sender == nextBarButton {
+            fetchCharacters(from: rickAndMorty?.info.next ?? "")
+            currentPage += 1
+            
+            if currentPage == 43 {
+                nextBarButton.isEnabled = false
+            }
+            previousBarButton.isEnabled = true
+        } else {
+            fetchCharacters(from: rickAndMorty?.info.prev ?? "")
+            if currentPage > 1 {
+                currentPage -= 1
+            }
+        }
+    }
+    
     // MARK: - Private Methods
     private func setupNavigationBar() {
         title = "Characters"
@@ -47,6 +92,9 @@ final class ListViewController: UICollectionViewController {
         navBarAppearance.backgroundColor = .black
         
         navigationController?.navigationBar.standardAppearance = navBarAppearance
+        
+        navigationItem.leftBarButtonItem = previousBarButton
+        navigationItem.rightBarButtonItem = nextBarButton
     }
     
     private func setupCollectionView() {
@@ -56,6 +104,18 @@ final class ListViewController: UICollectionViewController {
         )
         
         collectionView.backgroundColor = .clear
+    }
+    
+    private func createBarButton(_ title: String, action: Selector) -> UIBarButtonItem {
+        let previousButton = UIBarButtonItem(
+            title: title,
+            style: .plain,
+            target: self,
+            action: action
+        )
+        previousButton.tintColor = .white
+        
+        return previousButton
     }
 }
 
@@ -86,9 +146,10 @@ extension ListViewController {
 // MARK: UICollectionViewDelegateFlowLayout
 extension ListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 202)
+        CGSize(width: 160, height: 202)
     }
 }
+
 // MARK: - UICollectionViewDelegate
 extension ListViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
