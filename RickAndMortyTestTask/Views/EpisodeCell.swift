@@ -24,10 +24,11 @@ class EpisodeCell: UICollectionViewCell {
     lazy var nameEpisodeLabel: UILabel = {
         var nameEpisode = UILabel()
         
-        nameEpisode.text = "Pilot"
         nameEpisode.textColor = .white
-        nameEpisode.font = UIFont.boldSystemFont(ofSize: 19)
+        nameEpisode.font = UIFont.boldSystemFont(ofSize: 18)
         nameEpisode.translatesAutoresizingMaskIntoConstraints = false
+        nameEpisode.adjustsFontSizeToFitWidth = true // Устанавливаем автоматическое уменьшение шрифта
+        nameEpisode.minimumScaleFactor = 0.5
         
         return nameEpisode
     }()
@@ -36,7 +37,6 @@ class EpisodeCell: UICollectionViewCell {
         var episodeNumberLabel = UILabel()
         
         episodeNumberLabel.textColor = #colorLiteral(red: 0.2818226516, green: 0.7749570012, blue: 0.04761204123, alpha: 1)
-        episodeNumberLabel.text = "Episode: 1, Season: 1"
         episodeNumberLabel.font = UIFont.systemFont(ofSize: 15)
         episodeNumberLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -69,6 +69,32 @@ class EpisodeCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    func configure(_ episodeURL: String) {
+        NetworkManager.shared.fetch(Episode.self, from: episodeURL) { [weak self] result in
+            switch result {
+            case .success(let episode):
+                self?.nameEpisodeLabel.text = episode.name
+                self?.dateLabel.text = episode.airDate
+                
+                if let seasonRange = episode.episode.range(of: "S(\\d{2})", options: .regularExpression),
+                   let episodeRange = episode.episode.range(of: "E(\\d{2})", options: .regularExpression) {
+                    
+                    let seasonNumber = String(Int(episode.episode[seasonRange].dropFirst()) ?? 0)
+                    let episodeNumber = String(Int(episode.episode[episodeRange].dropFirst()) ?? 0)
+                    
+                    let formattedEpisode = "Episode: \(episodeNumber), Season: \(seasonNumber)"
+                    self?.episodeNumberLabel.text = formattedEpisode
+                } else {
+                    self?.episodeNumberLabel.text = episode.episode
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     // MARK: - Private Methods
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -79,6 +105,7 @@ class EpisodeCell: UICollectionViewCell {
             
             nameEpisodeLabel.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 15),
             nameEpisodeLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15),
+            nameEpisodeLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -15),
             
             episodeNumberLabel.bottomAnchor.constraint(equalTo: mainView.bottomAnchor, constant: -15),
             episodeNumberLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15),

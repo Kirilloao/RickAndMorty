@@ -58,8 +58,7 @@ class OriginCell: UICollectionViewCell {
     lazy var planetValueLabel: UILabel = {
         var planetValueLabel = UILabel()
         
-        planetValueLabel.text = "Earth"
-        planetValueLabel.font = UIFont.boldSystemFont(ofSize: 19)
+        planetValueLabel.font = UIFont.boldSystemFont(ofSize: 17)
         planetValueLabel.textColor = .white
         planetValueLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -79,6 +78,11 @@ class OriginCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Public Methods
+    func configure(_ character: Character) {
+        planetValueLabel.text = character.location.name
     }
     
     // MARK: - Private Methods

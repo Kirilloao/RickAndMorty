@@ -102,6 +102,13 @@ class InfoCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    func configure(_ character: Character) {
+        speciesValueLabel.text = character.species
+        typeValueLabel.text = character.type
+        genderValueLabel.text = character.gender
+    }
+    
     // MARK: - Private Methods
     private func addViews() {
         contentView.addSubview(mainView)

@@ -89,6 +89,17 @@ extension ListViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: 160, height: 202)
     }
 }
+// MARK: - UICollectionViewDelegate
+extension ListViewController {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCharacter = rickAndMorty?.results[indexPath.row]
+        
+        let detailsVC = DetailsViewController()
+        detailsVC.character = selectedCharacter
+        
+        navigationController?.pushViewController(detailsVC, animated: true)
+    }
+}
 
 // MARK: - Networking
 extension ListViewController {

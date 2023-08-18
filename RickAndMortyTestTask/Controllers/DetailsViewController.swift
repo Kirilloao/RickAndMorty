@@ -8,11 +8,18 @@
 import UIKit
 
 class DetailsViewController: UICollectionViewController {
+    
+    // MARK: - Private Properties
+    private var episode: Episode!
+    
+    // MARK: - Public Properties
+    var character: Character!
+    
 
     // MARK: - Life Cycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.backgroundColor = .black
 
         collectionView.register(
@@ -69,7 +76,7 @@ extension DetailsViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
      
         if section == 3 {
-            return 10
+            return character.episode.count
         } else {
             return 1
         }
@@ -79,17 +86,28 @@ extension DetailsViewController {
         
         if indexPath.section == 0 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? MainViewCell else { return UICollectionViewCell() }
-        
+            
+            cell.configure(character)
+            
             return cell
         } else if indexPath.section == 1 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "infoCell", for: indexPath) as? InfoCell else { return UICollectionViewCell() }
+            
+            cell.configure(character)
+            
             return cell
         } else if indexPath.section == 2 {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "originCell", for: indexPath) as? OriginCell else { return UICollectionViewCell() }
+            
+            cell.configure(character)
 
             return cell
         } else {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "episodeCell", for: indexPath) as? EpisodeCell else { return UICollectionViewCell() }
+            
+            let episode = character.episode[indexPath.row]
+            
+            cell.configure(episode)
 
             return cell
         }
@@ -140,5 +158,19 @@ extension DetailsViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
       CGSize(width: collectionView.bounds.width, height: 20)
+    }
+}
+
+// MARK: - Networking
+extension DetailsViewController {
+    private func fetchEpisode(from url: String) {
+        NetworkManager.shared.fetch(Episode.self, from: url) { [weak self] result in
+            switch result {
+            case .success(let episode):
+                self?.episode = episode
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

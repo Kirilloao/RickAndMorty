@@ -59,6 +59,24 @@ class MainViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    func configure(_ character: Character) {
+        characterNameLabel.text = character.name
+        characterStatusLabel.text = character.status
+        
+        guard let imageURL = URL(string: character.image) else { return }
+        
+        NetworkManager.shared.fetchImage(from: imageURL) { [weak self] result in
+            switch result {
+                
+            case .success(let imageData):
+                self?.characterImageView.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     // MARK: Private Methods
     private func setupConstraints() {
         NSLayoutConstraint.activate([
