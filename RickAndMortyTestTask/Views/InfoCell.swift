@@ -99,7 +99,7 @@ class InfoCell: UICollectionViewCell {
     // MARK: - Public Methods
     func configure(_ character: Character) {
         speciesValueLabel.text = character.species
-        typeValueLabel.text = character.type
+        typeValueLabel.text = character.type.isEmpty ? "None" : character.type
         genderValueLabel.text = character.gender
     }
     
