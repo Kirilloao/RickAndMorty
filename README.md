@@ -1,4 +1,4 @@
-# RickAndMortyTestTask
+# RickAndMorty
 
 **UIKit/Code/MVC/URLSession**
 
