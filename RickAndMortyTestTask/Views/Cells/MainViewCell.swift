@@ -37,7 +37,7 @@ final class MainViewCell: UICollectionViewCell {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        setViews()
         setupConstraints()
     }
     
