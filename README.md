@@ -1,7 +1,17 @@
-# RickAndMorty
+# RickAndMorty 🦠
 
-**UIKit/Code/MVC/URLSession**
+## Tecnical Stack:
+* UIKit, MVC, NoStoryboard, URLSession, CollectionView, NSCache
 
-**API:** https://rickandmortyapi.com/api
+## Api:
+https://rickandmortyapi.com
+## Video demonstration:
 
-![ezgif com-optimize](https://github.com/Kirilloao/RickAndMortyTestTask/assets/106522858/04671ac9-1d1b-4017-91c3-d02b8dde99d5)
+<p align="center">
+  <img src="https://github.com/Kirilloao/RickAndMorty/blob/main/ezgif.com-video-to-gif.gif" width="300"/>
+</p>
+
+
+
+
+
