@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailsViewController: UICollectionViewController {
+final class DetailsViewController: UICollectionViewController {
     
     // MARK: - Private Properties
     private var episode: Episode!

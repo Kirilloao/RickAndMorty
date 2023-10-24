@@ -17,7 +17,7 @@ enum Links: String  {
     case rickAndMortyURL = "https://rickandmortyapi.com/api/character"
 }
 
-class NetworkManager {
+final class NetworkManager {
     static let shared = NetworkManager()
     
     private init() {}

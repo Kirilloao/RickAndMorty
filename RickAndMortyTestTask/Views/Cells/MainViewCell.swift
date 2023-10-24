@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewCell: UICollectionViewCell {
+final class MainViewCell: UICollectionViewCell {
     
     lazy var characterImageView: CustomImageView = {
         var characterImage = CustomImageView()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OriginCell: UICollectionViewCell {
+final class OriginCell: UICollectionViewCell {
     
     // MARK: - Private UI Properties
     private lazy var mainView: CustomView = {

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EpisodeCell: UICollectionViewCell {
+final class EpisodeCell: UICollectionViewCell {
     
     // MARK: - Private UI Properties
     private lazy var mainView: CustomView = {
