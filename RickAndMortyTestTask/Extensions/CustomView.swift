@@ -7,8 +7,9 @@
 
 import UIKit
 
-class CustomView: UIView {
+final class CustomView: UIView {
     
+    // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupView()
@@ -18,6 +19,7 @@ class CustomView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Private Methods
     private func setupView() {
         self.backgroundColor = .greyColor
         self.layer.cornerRadius = 15

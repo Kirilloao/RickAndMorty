@@ -7,8 +7,9 @@
 
 import UIKit
 
-class CustomImageView: UIImageView{
+final class CustomImageView: UIImageView{
     
+    // MARK: - init
     init() {
         super.init(frame: .zero)
         setupImageView()
@@ -19,6 +20,7 @@ class CustomImageView: UIImageView{
         setupImageView()
     }
     
+    // MARK: - Private Methods
     private func setupImageView() {
         self.layer.cornerRadius = 15
         self.clipsToBounds = true

@@ -40,7 +40,7 @@ final class OriginCell: UICollectionViewCell {
         return planetLabel
     }()
     
-    lazy var planetValueLabel: CustomLabel = {
+    private lazy var planetValueLabel: CustomLabel = {
         var planetValueLabel = CustomLabel(
             customFont: UIFont.boldSystemFont(ofSize: 17)
         )
@@ -50,7 +50,7 @@ final class OriginCell: UICollectionViewCell {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addViews()
+        setViews()
         setupConstraints()
     }
     
@@ -64,7 +64,7 @@ final class OriginCell: UICollectionViewCell {
     }
     
     // MARK: - Private Methods
-    private func addViews() {
+    private func setViews() {
         contentView.addSubview(mainView)
         mainView.addSubview(squareView)
         squareView.addSubview(earthImageView)

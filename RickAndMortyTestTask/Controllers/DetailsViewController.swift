@@ -162,7 +162,7 @@ extension DetailsViewController {
                 3: "Episodes"
             ]
             
-            headerView.titleLabel.text = sectionTitles[indexPath.section]
+            headerView.setTitle(sectionTitles[indexPath.section])
             
             return headerView
         }

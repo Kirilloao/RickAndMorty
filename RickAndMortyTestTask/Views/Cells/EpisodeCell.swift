@@ -15,15 +15,14 @@ final class EpisodeCell: UICollectionViewCell {
         return mainView
     }()
     
-    // MARK: - Public UI Properties
-    lazy var nameEpisodeLabel: CustomLabel = {
+    private lazy var nameEpisodeLabel: CustomLabel = {
         var nameEpisode = CustomLabel(
             customFont: UIFont.boldSystemFont(ofSize: 18)
         )
         return nameEpisode
     }()
     
-    lazy var episodeNumberLabel: CustomLabel = {
+    private lazy var episodeNumberLabel: CustomLabel = {
         var episodeNumberLabel = CustomLabel(
             customColor: .greenColor,
             customFont: UIFont.systemFont(ofSize: 15)
@@ -31,7 +30,7 @@ final class EpisodeCell: UICollectionViewCell {
         return episodeNumberLabel
     }()
     
-    lazy var dateLabel: CustomLabel = {
+    private lazy var dateLabel: CustomLabel = {
         var dateLabel = CustomLabel(
             customColor: .dateLabel,
             customFont: UIFont.systemFont(ofSize: 14)
@@ -42,7 +41,7 @@ final class EpisodeCell: UICollectionViewCell {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addViews()
+        setViews()
         setupConstraints()
     }
     
@@ -65,7 +64,7 @@ final class EpisodeCell: UICollectionViewCell {
     }
     
     // MARK: - Private Methods
-    private func addViews() {
+    private func setViews() {
         contentView.addSubview(mainView)
         mainView.addSubview(nameEpisodeLabel)
         mainView.addSubview(episodeNumberLabel)

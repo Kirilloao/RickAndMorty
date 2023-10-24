@@ -39,18 +39,17 @@ final class InfoCell: UICollectionViewCell {
         return genderLabel
     }()
     
-    // MARK: - Public UI Properties
-    lazy var speciesValueLabel: CustomLabel = {
+    private lazy var speciesValueLabel: CustomLabel = {
         var speciesValueLabel = CustomLabel(customColor: .white)
         return speciesValueLabel
     }()
     
-    lazy var typeValueLabel: CustomLabel = {
+    private lazy var typeValueLabel: CustomLabel = {
         var typeValueLabel = CustomLabel(customColor: .white)
         return typeValueLabel
     }()
     
-    lazy var genderValueLabel: CustomLabel = {
+    private lazy var genderValueLabel: CustomLabel = {
         var genderValueLabel = CustomLabel(customColor: .white)
         return genderValueLabel
     }()
@@ -58,7 +57,7 @@ final class InfoCell: UICollectionViewCell {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        addViews()
+        setViews()
         setupConstraints()
     }
     
@@ -74,7 +73,7 @@ final class InfoCell: UICollectionViewCell {
     }
     
     // MARK: - Private Methods
-    private func addViews() {
+    private func setViews() {
         contentView.addSubview(mainView)
         mainView.addSubview(speciesLabel)
         mainView.addSubview(speciesValueLabel)
@@ -94,7 +93,7 @@ final class InfoCell: UICollectionViewCell {
             speciesLabel.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 15),
             speciesLabel.leadingAnchor.constraint(equalTo: mainView.leadingAnchor, constant: 15),
             speciesLabel.heightAnchor.constraint(equalToConstant: 20),
-         
+            
             speciesValueLabel.topAnchor.constraint(equalTo: mainView.topAnchor, constant: 15),
             speciesValueLabel.trailingAnchor.constraint(equalTo: mainView.trailingAnchor, constant: -15),
             speciesValueLabel.heightAnchor.constraint(equalToConstant: 20),

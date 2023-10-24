@@ -15,12 +15,12 @@ final class CharacterCell: UICollectionViewCell {
         return mainView
     }()
     
-    lazy var characterImageView: CustomImageView = {
+    private lazy var characterImageView: CustomImageView = {
         var characterImage = CustomImageView()
         return characterImage
     }()
     
-    lazy var characterNameLabel: UILabel = {
+    private lazy var characterNameLabel: UILabel = {
         var characterName = UILabel()
         characterName.font = UIFont.boldSystemFont(ofSize: 16)
         characterName.numberOfLines = 2
@@ -31,6 +31,8 @@ final class CharacterCell: UICollectionViewCell {
     }()
     
     private var activityIndicator: UIActivityIndicatorView?
+    
+    // MARK: - Private Properties
     private var imageURL: URL? {
         didSet {
             characterImageView.image = nil
@@ -43,7 +45,6 @@ final class CharacterCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubviews()
         setupConstraints()
-        
         activityIndicator = showSpinner(in: mainView)
     }
     

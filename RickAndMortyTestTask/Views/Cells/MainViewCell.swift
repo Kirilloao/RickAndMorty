@@ -9,12 +9,13 @@ import UIKit
 
 final class MainViewCell: UICollectionViewCell {
     
-    lazy var characterImageView: CustomImageView = {
+    // MARK: - Private UI Properties
+    private lazy var characterImageView: CustomImageView = {
         var characterImage = CustomImageView()
         return characterImage
     }()
     
-    lazy var characterNameLabel: UILabel = {
+    private lazy var characterNameLabel: UILabel = {
         var characterName = UILabel()
         characterName.font = UIFont.boldSystemFont(ofSize: 20)
         characterName.numberOfLines = 2
@@ -24,7 +25,7 @@ final class MainViewCell: UICollectionViewCell {
         return characterName
     }()
     
-    lazy var characterStatusLabel: UILabel = {
+    private lazy var characterStatusLabel: UILabel = {
         var characterStatusLabel = UILabel()
         characterStatusLabel.textColor = .greenColor
         characterStatusLabel.font = UIFont.systemFont(ofSize: 15)
@@ -36,9 +37,7 @@ final class MainViewCell: UICollectionViewCell {
     // MARK: - Init
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(characterImageView)
-        contentView.addSubview(characterNameLabel)
-        contentView.addSubview(characterStatusLabel)
+        
         setupConstraints()
     }
     
@@ -64,6 +63,12 @@ final class MainViewCell: UICollectionViewCell {
     }
     
     // MARK: Private Methods
+    private func setViews() {
+        contentView.addSubview(characterImageView)
+        contentView.addSubview(characterNameLabel)
+        contentView.addSubview(characterStatusLabel)
+    }
+    
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             characterImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
