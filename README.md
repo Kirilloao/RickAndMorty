@@ -1,7 +1,12 @@
 # RickAndMorty 🦠
 
 ## Tecnical Stack:
-* UIKit, MVC, NoStoryboard, URLSession, CollectionView, NSCache
+* UIKit
+*  MVC
+* NoStoryboard
+* URLSession
+* CollectionView
+* NSCache
 
 ## Api:
 https://rickandmortyapi.com
